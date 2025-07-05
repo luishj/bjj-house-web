@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Escolha a Categoria</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Fechar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="filtro" placeholder="Buscar categoria"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let cat of categoriasFiltradas()" (click)="selecionar(cat)">
+      {{ cat.nome }}
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-input placeholder="Adicionar nova categoria" [(ngModel)]="novaCategoriaNome"></ion-input>
+    <ion-button (click)="adicionarNovaCategoria()">Adicionar</ion-button>
+  </ion-item>
+</ion-content>

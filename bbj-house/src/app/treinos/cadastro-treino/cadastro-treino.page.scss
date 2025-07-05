@@ -1,0 +1,43 @@
+ion-content {
+  --background: #FAFAFA;
+  color: #333;
+}
+
+ion-item {
+  --background: #ffffff;
+  --color: #333;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+ion-label,
+ion-input,
+ion-textarea,
+ion-select {
+  color: #333 !important;
+}
+
+ion-list-header {
+  color: #D32F2F;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 16px;
+}
+
+ion-button {
+  --border-radius: 8px;
+  margin-top: 12px;
+}
+
+ion-button[color="primary"] {
+  --background: #D32F2F;
+}
+
+ion-button[color="medium"] {
+  --background: #212121;
+  --color: #fff;
+}
+ion-item ion-button {
+  margin-left: 4px;
+}

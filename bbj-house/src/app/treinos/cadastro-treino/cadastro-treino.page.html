@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastrar Treino</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- 🔴 Dados principais do treino -->
+  <ion-list-header>
+    <ion-label>Informações do Treino</ion-label>
+  </ion-list-header>
+
+  <ion-item>
+    <ion-label position="floating">Nome do Treino</ion-label>
+    <ion-input [(ngModel)]="treino.nome"></ion-input>
+  </ion-item>
+<ion-item>
+  <ion-label position="floating">Data (dd/mm/yyyy)</ion-label>
+  <ion-input
+    [(ngModel)]="treino.data"
+    type="text"
+    placeholder="dd/mm/yyyy"
+    maxlength="10"
+    mask="d0/M0/0000"
+    required>
+  </ion-input>
+</ion-item>
+
+  <!-- 🔴 Área de adicionar posição -->
+  <ion-list-header>
+    <ion-label>Adicionar Posição</ion-label>
+  </ion-list-header>
+
+  <div style="background: #1e1e1e; padding: 12px; border-radius: 8px;">
+
+    <ion-item>
+      <ion-label position="floating">Nome da Posição</ion-label>
+      <ion-input [(ngModel)]="posicaoAtual.nome"></ion-input>
+    </ion-item>
+
+<ion-item button (click)="abrirModalCategoria()">
+  <ion-label position="floating">Categoria</ion-label>
+  <ion-input [value]="getNomeCategoria(posicaoAtual.categoria)" readonly></ion-input>
+</ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Observação</ion-label>
+      <ion-textarea [(ngModel)]="posicaoAtual.observacao"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="block" color="medium" (click)="adicionarPosicao()">
+      <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+      Adicionar Posição
+    </ion-button>
+
+  </div>
+
+  <!-- 🔴 Lista das posições adicionadas -->
+<ion-list *ngIf="treino.posicoes.length > 0">
+  <ion-list-header>
+    <ion-label>Posições Adicionadas</ion-label>
+  </ion-list-header>
+
+  <ion-item *ngFor="let pos of treino.posicoes; let i = index">
+    <ion-label>
+
+      <h2 style="color: #D32F2F;">{{ getNomeCategoria(pos.categoria) | titlecase }}</h2>
+      <strong>{{ pos.nome }}</strong>
+      <p *ngIf="pos.observacao">{{ pos.observacao }}</p>
+    </ion-label>
+
+    <!-- Botão Editar -->
+    <ion-button fill="clear" size="small" (click)="editarPosicao(i)">
+      <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+    </ion-button>
+
+    <!-- Botão Excluir -->
+    <ion-button fill="clear" color="danger" size="small" (click)="excluirPosicao(i)">
+      <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-list>
+
+  <!-- 🔴 Botão de salvar -->
+  <ion-button expand="block" color="primary" (click)="salvarTreino()">
+    Salvar Treino
+  </ion-button>
+
+</ion-content>
