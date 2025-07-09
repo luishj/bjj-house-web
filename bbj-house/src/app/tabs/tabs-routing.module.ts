@@ -15,12 +15,21 @@ const routes: Routes = [
       {
         path: 'campeonatos',
         loadChildren: () =>
-          import('../campeonatos/campeonatos.module').then((m) => m.CampeonatosPageModule),
+          import('../campeonatos/campeonatos.module').then(
+            (m) => m.CampeonatosPageModule
+          ),
       },
       {
         path: 'academias',
         loadChildren: () =>
-          import('../academias/academias.module').then((m) => m.AcademiasPageModule),
+          import('../academias/academias.module').then(
+            (m) => m.AcademiasPageModule
+          ),
+      },
+      {
+        path: 'home',
+        loadChildren: () =>
+          import('../home/home.module').then((m) => m.HomePageModule),
       },
       {
         path: '',
@@ -30,7 +39,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: '',
+    path: '', 
     redirectTo: '/tabs/treinos',
     pathMatch: 'full',
   },

@@ -1,0 +1,66 @@
+.stat-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 0 0 16px 0;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.icon-container {
+  border-radius: 50%;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.bg-blue {
+    background: #dbeafe;
+  }
+
+  &.bg-green {
+    background: #d1fae5;
+  }
+}
+
+.stat-icon {
+  font-size: 24px;
+
+  &.text-blue {
+    color: #2563eb;
+  }
+
+  &.text-green {
+    color: #059669;
+  }
+}
+
+.percentage {
+  font-size: 14px;
+  font-weight: 600;
+  color: #10b981;
+}
+
+.stat-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  margin: 0 0 8px 0;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 4px 0;
+}
+
+.stat-subtitle {
+  font-size: 14px;
+  color: #9ca3af;
+  margin: 0;
+}

@@ -3,16 +3,16 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
-import { CampeonatosPageRoutingModule } from './campeonatos-routing.module';
-import { CampeonatosPage } from './campeonatos.page';
+import { TrainingEditPageRoutingModule } from './training-edit-routing.module';
+import { TrainingEditPage } from './training-edit.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CampeonatosPageRoutingModule
+    TrainingEditPageRoutingModule
   ],
-  declarations: [CampeonatosPage]
+  declarations: [TrainingEditPage]
 })
-export class CampeonatosPageModule {}
+export class TrainingEditPageModule {}

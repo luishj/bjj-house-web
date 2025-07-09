@@ -1,0 +1,33 @@
+<ion-content class="dashboard-content">
+  <app-header-card 
+    [greeting]="headerData.greeting"
+    [userName]="headerData.userName"
+    [subtitle]="headerData.subtitle">
+  </app-header-card>
+  
+  <div class="content-wrapper">
+    <app-graduacao-card 
+      [title]="graduationData.title"
+      [beltLevel]="graduationData.beltLevel"
+      [beltColor]="graduationData.beltColor"
+      [degree]="graduationData.degree">
+    </app-graduacao-card>
+    
+    <div class="stats-section">
+      <h2 class="section-title">Estatísticas dos Últimos 7 Dias</h2>
+      
+      <div class="stats-grid">
+        <app-stat-card 
+          *ngFor="let stat of statsData"
+          [title]="stat.title"
+          [value]="stat.value"
+          [subtitle]="stat.subtitle"
+          [percentage]="stat.percentage"
+          [icon]="stat.icon"
+          [iconColor]="stat.iconColor"
+          [iconBgColor]="stat.iconBgColor">
+        </app-stat-card>
+      </div>
+    </div>
+  </div>
+</ion-content>

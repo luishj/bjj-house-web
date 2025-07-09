@@ -1,0 +1,215 @@
+<ion-content class="training-details-content">
+  <div class="header-section">
+    <div class="header-nav">
+      <ion-button 
+        (click)="goBack()"
+        fill="clear" 
+        color="light"
+        class="back-button">
+        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+      </ion-button>
+      <h1 class="page-title">Detalhes do Treino</h1>
+      <div class="header-spacer"></div>
+    </div>
+    <p class="page-subtitle" *ngIf="trainingData">{{ formatDate(trainingData.date) }}</p>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-container">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Carregando detalhes...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="!isLoading && !trainingData" class="error-container">
+    <div class="error-icon">
+      <ion-icon name="alert-circle-outline"></ion-icon>
+    </div>
+    <h3>Treino não encontrado</h3>
+    <ion-button (click)="goBack()" color="primary">Voltar</ion-button>
+  </div>
+
+  <div *ngIf="!isLoading && trainingData" class="content-wrapper">
+    <!-- Informações Básicas -->
+    <div class="section-card">
+      <h2 class="section-title">Informações Básicas</h2>
+      
+      <div class="info-list">
+        <div class="info-item">
+          <ion-icon name="calendar-outline" class="info-icon"></ion-icon>
+          <div class="info-content">
+            <p class="info-label">Data</p>
+            <p class="info-value">{{ formatDate(trainingData.date) }}</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <ion-icon name="time-outline" class="info-icon"></ion-icon>
+          <div class="info-content">
+            <p class="info-label">Horário</p>
+            <p class="info-value">{{ trainingData.startTime }} - {{ trainingData.endTime }}</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <ion-icon name="person-outline" class="info-icon"></ion-icon>
+          <div class="info-content">
+            <p class="info-label">Instrutor</p>
+            <p class="info-value">{{ trainingData.instructor }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estatísticas Principais -->
+    <div class="stats-grid">
+      <div class="stat-card duration">
+        <div class="stat-icon">
+          <ion-icon name="time"></ion-icon>
+        </div>
+        <div class="stat-content">
+          <h3>Duração</h3>
+          <p class="stat-value">{{ trainingData.duration }}</p>
+        </div>
+      </div>
+
+      <div class="stat-card calories">
+        <div class="stat-icon">
+          <ion-icon name="flame"></ion-icon>
+        </div>
+        <div class="stat-content">
+          <h3>Calorias</h3>
+          <p class="stat-value">{{ trainingData.caloriesBurned }}</p>
+          <p class="stat-subtitle">queimadas</p>
+        </div>
+      </div>
+
+      <div class="stat-card rolls">
+        <div class="stat-icon">
+          <ion-icon name="fitness"></ion-icon>
+        </div>
+        <div class="stat-content">
+          <h3>Roladas</h3>
+          <p class="stat-value">{{ trainingData.totalRolls }}</p>
+          <p class="stat-subtitle">realizadas</p>
+        </div>
+      </div>
+
+      <div class="stat-card positions">
+        <div class="stat-icon">
+          <ion-icon name="library"></ion-icon>
+        </div>
+        <div class="stat-content">
+          <h3>Posições</h3>
+          <p class="stat-value">{{ trainingData.positionsLearned }}</p>
+          <p class="stat-subtitle">aprendidas</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Posições Aprendidas -->
+    <div class="section-card">
+      <h2 class="section-title">Posições Aprendidas</h2>
+      
+      <div *ngIf="trainingData.positions.length > 0; else noPositions" class="positions-list">
+        <div 
+          *ngFor="let position of trainingData.positions" 
+          class="position-item">
+          <h4 class="position-name">{{ position.name }}</h4>
+          <p *ngIf="position.description" class="position-description">{{ position.description }}</p>
+        </div>
+      </div>
+
+      <ng-template #noPositions>
+        <div class="empty-state">
+          <ion-icon name="library-outline"></ion-icon>
+          <p>Nenhuma posição registrada</p>
+        </div>
+      </ng-template>
+    </div>
+
+    <!-- Detalhes das Roladas -->
+    <div class="section-card">
+      <h2 class="section-title">Detalhes das Roladas</h2>
+      
+      <div *ngIf="trainingData.rolls.length > 0; else noRolls" class="rolls-list">
+        <div 
+          *ngFor="let roll of trainingData.rolls; let i = index" 
+          class="roll-item">
+          <div class="roll-header">
+            <h4 class="roll-title">Rolada {{ i + 1 }}</h4>
+            <span class="roll-duration">{{ roll.rollTime }} min</span>
+          </div>
+          
+          <div class="roll-stats">
+            <div class="roll-stat">
+              <ion-icon name="flash" class="stat-icon-small"></ion-icon>
+              <div>
+                <p class="stat-label-small">Técnicas</p>
+                <p class="stat-value-small">{{ roll.techniquesApplied }}</p>
+              </div>
+            </div>
+            
+            <div class="roll-stat">
+              <ion-icon name="trophy" class="stat-icon-small"></ion-icon>
+              <div>
+                <p class="stat-label-small">Raspagens</p>
+                <p class="stat-value-small">{{ roll.sweeps }}</p>
+              </div>
+            </div>
+            
+            <div class="roll-stat">
+              <ion-icon name="arrow-down" class="stat-icon-small"></ion-icon>
+              <div>
+                <p class="stat-label-small">Quedas</p>
+                <p class="stat-value-small">{{ roll.takedowns }}</p>
+              </div>
+            </div>
+            
+            <div class="roll-stat">
+              <ion-icon name="walk" class="stat-icon-small"></ion-icon>
+              <div>
+                <p class="stat-label-small">Passagens</p>
+                <p class="stat-value-small">{{ roll.guardPasses }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #noRolls>
+        <div class="empty-state">
+          <ion-icon name="fitness-outline"></ion-icon>
+          <p>Nenhuma rolada registrada</p>
+        </div>
+      </ng-template>
+    </div>
+
+    <!-- Resumo Geral -->
+    <div class="section-card">
+      <h2 class="section-title">Resumo Geral</h2>
+      
+      <div class="summary-grid">
+        <div class="summary-item">
+          <p class="summary-value">{{ getTotalTechniques() }}</p>
+          <p class="summary-label">Total de Técnicas</p>
+        </div>
+        
+        <div class="summary-item">
+          <p class="summary-value">{{ getTotalSweeps() }}</p>
+          <p class="summary-label">Total de Raspagens</p>
+        </div>
+        
+        <div class="summary-item">
+          <p class="summary-value">{{ getTotalTakedowns() }}</p>
+          <p class="summary-label">Total de Quedas</p>
+        </div>
+        
+        <div class="summary-item">
+          <p class="summary-value">{{ getTotalGuardPasses() }}</p>
+          <p class="summary-label">Total de Passagens</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

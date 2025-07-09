@@ -1,0 +1,294 @@
+<ion-content class="training-edit-content">
+  <div class="header-section">
+    <div class="header-nav">
+      <ion-button 
+        (click)="goBack()"
+        fill="clear" 
+        color="light"
+        class="back-button">
+        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+      </ion-button>
+      <h1 class="page-title">Editar Treino</h1>
+      <div class="header-spacer"></div>
+    </div>
+    <p class="page-subtitle">Modifique os detalhes do seu treino</p>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-container">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Carregando treino...</p>
+  </div>
+
+  <div *ngIf="!isLoading" class="content-wrapper">
+    <!-- Informações do Treino -->
+    <div class="section-card">
+      <h2 class="section-title">Informações do Treino</h2>
+      
+      <div class="form-group">
+        <label class="form-label">
+          <ion-icon name="calendar-outline" class="label-icon"></ion-icon>
+          Data
+        </label>
+        <ion-datetime 
+          [(ngModel)]="trainingData.date"
+          presentation="date"
+          class="custom-datetime">
+        </ion-datetime>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">
+          <ion-icon name="time-outline" class="label-icon"></ion-icon>
+          Horário de Início
+        </label>
+        <ion-datetime 
+          [(ngModel)]="trainingData.startTime"
+          presentation="time"
+          class="custom-datetime">
+        </ion-datetime>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">
+          <ion-icon name="time-outline" class="label-icon"></ion-icon>
+          Horário de Fim
+        </label>
+        <ion-datetime 
+          [(ngModel)]="trainingData.endTime"
+          presentation="time"
+          class="custom-datetime">
+        </ion-datetime>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">
+          <ion-icon name="person-outline" class="label-icon"></ion-icon>
+          Mestre/Instrutor
+        </label>
+        <ion-input 
+          [(ngModel)]="trainingData.instructor"
+          placeholder="Nome do instrutor"
+          class="custom-input">
+        </ion-input>
+      </div>
+    </div>
+
+    <!-- Posições Aprendidas -->
+    <div class="section-card">
+      <h2 class="section-title">Posições Aprendidas</h2>
+      
+      <div class="form-group">
+        <ion-input 
+          [(ngModel)]="newPosition.name"
+          placeholder="Nome da posição"
+          class="custom-input">
+        </ion-input>
+      </div>
+
+      <div class="form-group">
+        <ion-textarea 
+          [(ngModel)]="newPosition.description"
+          placeholder="Descrição (opcional)"
+          rows="3"
+          class="custom-textarea">
+        </ion-textarea>
+      </div>
+
+      <ion-button 
+        (click)="addPosition()"
+        fill="solid" 
+        color="success"
+        class="add-button">
+        <ion-icon name="add" slot="start"></ion-icon>
+        Adicionar
+      </ion-button>
+
+      <!-- Lista de posições adicionadas -->
+      <div class="added-items" *ngIf="trainingData.positions.length > 0">
+        <div 
+          *ngFor="let position of trainingData.positions; let i = index" 
+          class="added-item">
+          <div class="item-content">
+            <h4>{{ position.name }}</h4>
+            <p *ngIf="position.description">{{ position.description }}</p>
+          </div>
+          <ion-button 
+            (click)="removePosition(i)"
+            fill="clear" 
+            color="danger"
+            size="small">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Roladas -->
+    <div class="section-card">
+      <h2 class="section-title">Roladas</h2>
+      
+      <div class="counter-group">
+        <div class="counter-item">
+          <label class="counter-label">Tempo (minutos)</label>
+          <div class="counter-controls">
+            <ion-button 
+              (click)="decrementCounter('rollTime')"
+              fill="outline" 
+              size="small"
+              class="counter-btn">
+              <ion-icon name="remove"></ion-icon>
+            </ion-button>
+            <span class="counter-value">{{ trainingData.rollTime }}</span>
+            <ion-button 
+              (click)="incrementCounter('rollTime')"
+              fill="outline" 
+              size="small"
+              class="counter-btn">
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+
+        <div class="counter-item">
+          <label class="counter-label">Técnicas aplicadas</label>
+          <div class="counter-controls">
+            <ion-button 
+              (click)="decrementCounter('techniquesApplied')"
+              fill="outline" 
+              size="small"
+              class="counter-btn">
+              <ion-icon name="remove"></ion-icon>
+            </ion-button>
+            <span class="counter-value">{{ trainingData.techniquesApplied }}</span>
+            <ion-button 
+              (click)="incrementCounter('techniquesApplied')"
+              fill="outline" 
+              size="small"
+              class="counter-btn">
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+
+        <div class="counter-item">
+          <label class="counter-label">Raspagens</label>
+          <div class="counter-controls">
+            <ion-button 
+              (click)="decrementCounter('sweeps')"
+              fill="outline" 
+              size="small"
+              class="counter-btn">
+              <ion-icon name="remove"></ion-icon>
+            </ion-button>
+            <span class="counter-value">{{ trainingData.sweeps }}</span>
+            <ion-button 
+              (click)="incrementCounter('sweeps')"
+              fill="outline" 
+              size="small"
+              class="counter-btn">
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+
+        <div class="counter-item">
+          <label class="counter-label">Quedas</label>
+          <div class="counter-controls">
+            <ion-button 
+              (click)="decrementCounter('takedowns')"
+              fill="outline" 
+              size="small"
+              class="counter-btn">
+              <ion-icon name="remove"></ion-icon>
+            </ion-button>
+            <span class="counter-value">{{ trainingData.takedowns }}</span>
+            <ion-button 
+              (click)="incrementCounter('takedowns')"
+              fill="outline" 
+              size="small"
+              class="counter-btn">
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+
+        <div class="counter-item">
+          <label class="counter-label">Passagens</label>
+          <div class="counter-controls">
+            <ion-button 
+              (click)="decrementCounter('guardPasses')"
+              fill="outline" 
+              size="small"
+              class="counter-btn">
+              <ion-icon name="remove"></ion-icon>
+            </ion-button>
+            <span class="counter-value">{{ trainingData.guardPasses }}</span>
+            <ion-button 
+              (click)="incrementCounter('guardPasses')"
+              fill="outline" 
+              size="small"
+              class="counter-btn">
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
+      <ion-button 
+        (click)="addRoll()"
+        fill="solid" 
+        color="success"
+        class="add-button">
+        <ion-icon name="add" slot="start"></ion-icon>
+        Adicionar Rolada
+      </ion-button>
+
+      <!-- Lista de roladas adicionadas -->
+      <div class="added-items" *ngIf="trainingData.rolls.length > 0">
+        <div 
+          *ngFor="let roll of trainingData.rolls; let i = index" 
+          class="added-item roll-item">
+          <div class="item-content">
+            <h4>Rolada {{ i + 1 }}</h4>
+            <div class="roll-stats">
+              <span class="stat">{{ roll.rollTime }}min</span>
+              <span class="stat">{{ roll.techniquesApplied }} técnicas</span>
+              <span class="stat">{{ roll.sweeps }} raspagens</span>
+              <span class="stat">{{ roll.takedowns }} quedas</span>
+              <span class="stat">{{ roll.guardPasses }} passagens</span>
+            </div>
+          </div>
+          <ion-button 
+            (click)="removeRoll(i)"
+            fill="clear" 
+            color="danger"
+            size="small">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botões de Ação -->
+    <div class="action-buttons">
+      <ion-button 
+        (click)="goBack()"
+        expand="block"
+        fill="outline"
+        color="medium"
+        class="cancel-button">
+        Cancelar
+      </ion-button>
+      
+      <ion-button 
+        (click)="saveTraining()"
+        expand="block"
+        color="tertiary"
+        class="save-button">
+        <ion-icon name="save" slot="start"></ion-icon>
+        Salvar Alterações
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

@@ -1,13 +1,58 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>campeonatos</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="campeonatos-content">
+  <div class="header-section">
+    <h1 class="page-title">Campeonatos</h1>
+    <p class="page-subtitle">Acompanhe competições e resultados</p>
+  </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">campeonatos</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="content-wrapper">
+    <!-- Lista de Campeonatos -->
+    <div class="championships-list">
+      <div 
+        *ngFor="let championship of championships" 
+        class="championship-card">
+        
+        <!-- Imagem -->
+        <div class="championship-image">
+          <img 
+            [src]="championship.image" 
+            [alt]="championship.title"
+            (error)="onImageError($event)"
+            class="image">
+        </div>
+
+        <!-- Conteúdo -->
+        <div class="championship-content">
+          <div class="championship-header">
+            <h3 class="championship-title">{{ championship.title }}</h3>
+            <span class="status-badge" [ngClass]="getStatusClass(championship.status)">
+              {{ getStatusText(championship.status) }}
+            </span>
+          </div>
+
+          <div class="championship-details">
+            <div class="detail-item">
+              <ion-icon name="calendar-outline" class="detail-icon"></ion-icon>
+              <span class="detail-text">{{ formatDate(championship.date) }}</span>
+            </div>
+            <div class="detail-item">
+              <ion-icon name="location-outline" class="detail-icon"></ion-icon>
+              <span class="detail-text">{{ championship.location }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botão para adicionar campeonato -->
+    <div class="add-championship-section">
+      <ion-button 
+        (click)="addChampionship()"
+        expand="block"
+        size="large"
+        class="add-championship-button">
+        <ion-icon name="trophy" slot="start"></ion-icon>
+        Cadastrar Campeonato
+      </ion-button>
+    </div>
+  </div>
 </ion-content>

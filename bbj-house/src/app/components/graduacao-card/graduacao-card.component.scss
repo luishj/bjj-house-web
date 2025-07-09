@@ -1,0 +1,154 @@
+.graduation-card {
+  margin: -16px 16px 24px 16px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  gap: 20px;
+}
+
+.icon-container {
+  background: #fef3c7;
+  border-radius: 50%;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trophy-icon {
+  font-size: 28px;
+  color: #d97706;
+}
+
+.belt-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.belt-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.belt-base {
+  width: 200px;
+  height: 40px;
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    height: 8px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+    border-radius: 16px 16px 0 0;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    height: 8px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, transparent 100%);
+    border-radius: 0 0 16px 16px;
+  }
+}
+
+.belt-stripes {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+}
+
+.stripe {
+  width: 3px;
+  height: 24px;
+  border-radius: 1.5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  
+  &.stripe-white {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+  }
+  
+  &.stripe-black {
+    background: #1f2937;
+  }
+  
+  &.stripe-red {
+    background: #dc2626;
+  }
+  
+  &.stripe-yellow {
+    background: #fbbf24;
+  }
+}
+
+// Cores das faixas
+.belt-white {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-color: #d1d5db;
+}
+
+.belt-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+}
+
+.belt-purple {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+}
+
+.belt-brown {
+  background: linear-gradient(135deg, #92400e 0%, #78350f 100%);
+}
+
+.belt-black {
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+}
+
+.belt-coral {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+}
+
+.belt-red {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+}
+
+.belt-default {
+  background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+}
+
+.belt-info {
+  text-align: center;
+  
+  .belt-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+  }
+}

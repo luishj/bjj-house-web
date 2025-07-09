@@ -1,0 +1,28 @@
+.dashboard-content {
+  --background: #f3f4f6;
+}
+
+.content-wrapper {
+  padding-bottom: 24px;
+}
+
+.stats-section {
+  padding: 0 16px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 16px 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}

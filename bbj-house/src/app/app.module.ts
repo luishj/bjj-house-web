@@ -7,6 +7,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { TrainingEditPage } from './treinos/training-edit/training-edit.page';
 
 @NgModule({
   declarations: [AppComponent],

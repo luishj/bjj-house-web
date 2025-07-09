@@ -1,0 +1,37 @@
+.card {
+  background: white;
+border-radius: 0px 0px 16px 16px;
+  padding: 16px;
+  margin-top: 16px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+
+  .topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ion-icon {
+      font-size: 24px;
+      color: #888;
+    }
+  }
+
+  .titulo {
+    font-size: 14px;
+    color: #666;
+    margin-top: 8px;
+  }
+
+  .valor {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1e64f0;
+    margin-top: 4px;
+  }
+
+  .descricao {
+    font-size: 12px;
+    color: #999;
+    margin-top: 4px;
+  }
+}

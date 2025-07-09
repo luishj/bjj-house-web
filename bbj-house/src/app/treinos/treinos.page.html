@@ -1,25 +1,95 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Meus Treinos</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="treinos-content">
+  <div class="header-section">
+    <h1 class="page-title">Meus Treinos</h1>
+    <p class="page-subtitle">Acompanhe seu histórico de treinos</p>
+  </div>
 
-<ion-content>
+  <div class="content-wrapper">
+    <!-- Botão Adicionar Treino -->
+    <div class="add-training-section">
+      <ion-button 
+        (click)="addTraining()"
+        expand="block"
+        size="large"
+        class="add-training-button">
+        <ion-icon name="add" slot="start"></ion-icon>
+        Adicionar Treino
+      </ion-button>
+    </div>
 
-  <ion-list>
-    <ion-item *ngFor="let treino of treinos">
-      <ion-label>
-        <h2>{{ treino.nome }}</h2>
-        <p>{{ treino.data }}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+    <!-- Lista de Treinos -->
+    <div class="trainings-list" *ngIf="trainings.length > 0">
+      <div 
+        *ngFor="let training of trainings" 
+        class="training-card">
+        <div class="training-header">
+          <div class="training-date">
+            <ion-icon name="calendar-outline" class="date-icon"></ion-icon>
+            <span>{{ formatDate(training.date) }}</span>
+          </div>
+          <div class="training-duration">
+            <ion-icon name="time-outline" class="time-icon"></ion-icon>
+            <span>{{ training.duration }}</span>
+          </div>
+        </div>
 
-  <!-- Botão flutuante -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="abrirCadastro()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+        <div class="training-info">
+          <h3 class="instructor-name">
+            <ion-icon name="person-outline" class="instructor-icon"></ion-icon>
+            {{ training.instructor }}
+          </h3>
+          
+          <div class="training-stats">
+            <div class="stat-item">
+              <span class="stat-label">Posições</span>
+              <span class="stat-value">{{ training.positions }}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Roladas</span>
+              <span class="stat-value">{{ training.rolls }}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Técnicas</span>
+              <span class="stat-value">{{ training.techniques }}</span>
+            </div>
+          </div>
+        </div>
 
+        <div class="training-actions">
+          <ion-button 
+            (click)="viewTraining(training)"
+            fill="clear" 
+            size="small"
+            color="primary">
+            <ion-icon name="eye-outline" slot="start"></ion-icon>
+            Ver Detalhes
+          </ion-button>
+          <ion-button 
+            (click)="editTraining(training)"
+            fill="clear" 
+            size="small"
+            color="medium">
+            <ion-icon name="create-outline" slot="start"></ion-icon>
+            Editar
+          </ion-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estado Vazio -->
+    <div class="empty-state" *ngIf="trainings.length === 0">
+      <div class="empty-icon">
+        <ion-icon name="fitness-outline"></ion-icon>
+      </div>
+      <h3>Nenhum treino registrado</h3>
+      <p>Comece registrando seu primeiro treino!</p>
+      <ion-button 
+        (click)="addTraining()"
+        fill="solid"
+        color="primary">
+        <ion-icon name="add" slot="start"></ion-icon>
+        Adicionar Primeiro Treino
+      </ion-button>
+    </div>
+  </div>
 </ion-content>

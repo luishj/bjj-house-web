@@ -20,8 +20,20 @@ const routes: Routes = [
     loadChildren: () => import('./treinos/treinos.module').then( m => m.TreinosPageModule)
   },
   {
-    path: 'cadastro-treino',
-    loadChildren: () => import('./treinos/cadastro-treino/cadastro-treino.module').then( m => m.CadastroTreinoPageModule)
+    path: 'training-registration',
+    loadChildren: () => import('./treinos/training-registration/training-registration.module').then( m => m.TrainingRegistrationPageModule)
+  }, 
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },  {
+    path: 'training-edit/:id',
+    loadChildren: () => import('./treinos/training-edit/training-edit.module').then(m => m.TrainingEditPageModule)
+  }
+  ,
+  {
+    path: 'training-details/:id',
+    loadChildren: () => import('./treinos/training-details/training-details.module').then(m => m.TrainingDetailsPageModule)
   }
 ];
 @NgModule({

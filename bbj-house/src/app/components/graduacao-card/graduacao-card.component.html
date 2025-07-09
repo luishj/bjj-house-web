@@ -1,0 +1,27 @@
+<ion-card class="graduation-card">
+  <ion-card-content>
+    <div class="card-content">
+      <div class="icon-container">
+        <ion-icon name="trophy" class="trophy-icon"></ion-icon>
+      </div>
+      
+      <div class="belt-section">
+        <div class="belt-container">
+          <div class="belt-base {{ getBeltColorClass(beltColor) }}">
+            <div class="belt-stripes">
+              <div 
+                *ngFor="let stripe of getStripes()" 
+                class="stripe"
+                [ngClass]="stripe.class">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="belt-info">
+          <p class="belt-name">{{ beltLevel }}</p>
+        </div>
+      </div>
+    </div>
+  </ion-card-content>
+</ion-card>

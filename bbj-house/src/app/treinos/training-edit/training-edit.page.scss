@@ -1,0 +1,279 @@
+.training-edit-content {
+  --background: #f8fafc;
+}
+
+.header-section {
+  background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+  color: white;
+  padding: 32px 20px 24px 20px;
+  border-radius: 0 0 24px 24px;
+  margin-bottom: 20px;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.back-button {
+  --color: white;
+  --background: transparent;
+  --border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+}
+
+.header-spacer {
+  width: 40px;
+}
+
+.page-subtitle {
+  font-size: 14px;
+  opacity: 0.9;
+  margin: 0;
+  text-align: center;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  
+  ion-spinner {
+    margin-bottom: 16px;
+    --color: #7c3aed;
+  }
+  
+  p {
+    color: #6b7280;
+    margin: 0;
+  }
+}
+
+.content-wrapper {
+  padding: 0 16px 24px 16px;
+}
+
+.section-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 20px 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.label-icon {
+  font-size: 16px;
+  margin-right: 8px;
+  color: #6b7280;
+}
+
+.custom-input,
+.custom-textarea,
+.custom-datetime {
+  --background: #f9fafb;
+  --border-color: #e5e7eb;
+  --border-radius: 12px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --color: #1f2937;
+  font-size: 14px;
+}
+
+.custom-input:focus-within,
+.custom-textarea:focus-within,
+.custom-datetime:focus-within {
+  --border-color: #7c3aed;
+}
+
+.add-button {
+  --background: #10b981;
+  --background-activated: #059669;
+  --border-radius: 12px;
+  height: 44px;
+  font-weight: 600;
+  margin: 16px 0;
+}
+
+.added-items {
+  margin-top: 16px;
+}
+
+.added-item {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.item-content {
+  flex: 1;
+  
+  h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 4px 0;
+  }
+  
+  p {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.4;
+  }
+}
+
+.counter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.counter-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.counter-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  flex: 1;
+}
+
+.counter-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.counter-btn {
+  --background: transparent;
+  --border-color: #d1d5db;
+  --color: #6b7280;
+  --border-radius: 8px;
+  width: 36px;
+  height: 36px;
+}
+
+.counter-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  min-width: 24px;
+  text-align: center;
+}
+
+.roll-item {
+  .item-content {
+    h4 {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.roll-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stat {
+  background: #ede9fe;
+  color: #7c3aed;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.cancel-button {
+  --border-color: #9ca3af;
+  --color: #6b7280;
+  --border-radius: 16px;
+  height: 56px;
+  font-size: 16px;
+  font-weight: 600;
+  flex: 1;
+}
+
+.save-button {
+  --background: #7c3aed;
+  --background-activated: #6d28d9;
+  --border-radius: 16px;
+  height: 56px;
+  font-size: 16px;
+  font-weight: 700;
+  flex: 1;
+}
+
+// Responsive adjustments
+@media (min-width: 768px) {
+  .content-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 24px 24px 24px;
+  }
+  
+  .counter-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  
+  .action-buttons {
+    max-width: 400px;
+    margin: 32px auto 0;
+  }
+}
