@@ -1,6 +1,6 @@
 .custom-header {
-  --background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
-  --color: white;
+  background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+  color: white;
   border-radius: 0 0 24px 24px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
@@ -8,8 +8,6 @@
 .header-content {
   padding: 24px 20px;
   color: white;
-   
-  background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
 }
 
 .user-info {
@@ -26,6 +24,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
 }
 
 .avatar-icon {
@@ -47,6 +51,16 @@
   font-size: 20px;
   font-weight: 700;
   margin: 0;
+}
+
+.login-prompt {
+  cursor: pointer;
+  text-decoration: underline;
+  opacity: 0.9;
+  
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .subtitle {

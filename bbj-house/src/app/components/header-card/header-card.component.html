@@ -1,12 +1,19 @@
 <ion-header class="custom-header">
   <div class="header-content">
     <div class="user-info">
-      <div class="avatar-container">
-        <ion-icon name="person" class="avatar-icon"></ion-icon>
+      <div class="avatar-container" (click)="onAuthAction()">
+        <ion-icon [name]="isAuthenticated ? 'log-out-outline' : 'person-outline'" class="avatar-icon"></ion-icon>
       </div>
       <div class="user-details">
         <p class="greeting">{{ greeting }}</p>
-        <h1 class="user-name">{{ userName }}</h1>
+        <h1 class="user-name">
+          <ng-container *ngIf="user$ | async as user; else loginPrompt">
+            {{ user.name }}
+          </ng-container>
+          <ng-template #loginPrompt>
+            <span class="login-prompt">Faça seu login</span>
+          </ng-template>
+        </h1>
       </div>
     </div>
     <p class="subtitle">{{ subtitle }}</p>

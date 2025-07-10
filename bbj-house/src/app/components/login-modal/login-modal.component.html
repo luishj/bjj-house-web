@@ -1,0 +1,107 @@
+<ion-modal [isOpen]="isOpen" (didDismiss)="close()">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>{{ isLogin ? 'Entrar' : 'Criar Conta' }}</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="close()" fill="clear">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="login-modal-content">
+    <div class="modal-container">
+      <!-- Demo Info -->
+      <ion-card *ngIf="isLogin" class="demo-card">
+        <ion-card-content>
+          <p class="demo-title">Demo Login:</p>
+          <p class="demo-text">Email: joao&#64;email.com'</p>
+          <p class="demo-text">Senha: 123456</p>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Form -->
+      <form (ngSubmit)="onSubmit()" class="login-form">
+        <!-- Nome (apenas para registro) -->
+        <div *ngIf="!isLogin" class="form-group">
+          <label class="form-label">
+            <ion-icon name="person-outline" class="label-icon"></ion-icon>
+            Nome Completo
+          </label>
+          <ion-input
+            [(ngModel)]="formData.name"
+            name="name"
+            placeholder="Seu nome completo"
+            class="custom-input">
+          </ion-input>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label class="form-label">
+            <ion-icon name="mail-outline" class="label-icon"></ion-icon>
+            Email
+          </label>
+          <ion-input
+            [(ngModel)]="formData.email"
+            name="email"
+            type="email"
+            placeholder="seu@email.com"
+            class="custom-input">
+          </ion-input>
+        </div>
+
+        <!-- Senha -->
+        <div class="form-group">
+          <label class="form-label">
+            <ion-icon name="lock-closed-outline" class="label-icon"></ion-icon>
+            Senha
+          </label>
+          <div class="password-container">
+            <ion-input
+              [(ngModel)]="formData.password"
+              name="password"
+              [type]="showPassword ? 'text' : 'password'"
+              placeholder="Sua senha"
+              class="custom-input password-input">
+            </ion-input>
+            <ion-button 
+              (click)="togglePasswordVisibility()"
+              fill="clear" 
+              class="password-toggle">
+              <ion-icon [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+
+        <!-- Error Message -->
+        <ion-card *ngIf="error" class="error-card">
+          <ion-card-content>
+            <p class="error-text">{{ error }}</p>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- Submit Button -->
+        <ion-button 
+          type="submit"
+          expand="block"
+          [disabled]="isLoading"
+          class="submit-button">
+          <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+          <span *ngIf="!isLoading">{{ isLogin ? 'Entrar' : 'Criar Conta' }}</span>
+        </ion-button>
+      </form>
+
+      <!-- Toggle Mode -->
+      <div class="toggle-mode">
+        <p class="toggle-text">
+          {{ isLogin ? 'Não tem uma conta?' : 'Já tem uma conta?' }}
+          <ion-button (click)="toggleMode()" fill="clear" class="toggle-button">
+            {{ isLogin ? 'Criar conta' : 'Fazer login' }}
+          </ion-button>
+        </p>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal>

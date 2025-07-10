@@ -1,33 +1,60 @@
 <ion-content class="dashboard-content">
-  <app-header-card 
-    [greeting]="headerData.greeting"
-    [userName]="headerData.userName"
-    [subtitle]="headerData.subtitle">
-  </app-header-card>
+  <div (click)="openLoginModal()">
+    <app-header-card 
+      [greeting]="headerData.greeting"
+      [subtitle]="headerData.subtitle">
+    </app-header-card>
+  </div>
   
   <div class="content-wrapper">
-    <app-graduacao-card 
-      [title]="graduationData.title"
-      [beltLevel]="graduationData.beltLevel"
-      [beltColor]="graduationData.beltColor"
-      [degree]="graduationData.degree">
-    </app-graduacao-card>
-    
-    <div class="stats-section">
-      <h2 class="section-title">Estatísticas dos Últimos 7 Dias</h2>
+    <ng-container *ngIf="isAuthenticated$ | async; else notLoggedIn">
+      <app-graduacao-card 
+        [title]="graduationData.title"
+        [beltLevel]="graduationData.beltLevel"
+        [beltColor]="graduationData.beltColor"
+        [degree]="graduationData.degree">
+      </app-graduacao-card>
       
-      <div class="stats-grid">
-        <app-stat-card 
-          *ngFor="let stat of statsData"
-          [title]="stat.title"
-          [value]="stat.value"
-          [subtitle]="stat.subtitle"
-          [percentage]="stat.percentage"
-          [icon]="stat.icon"
-          [iconColor]="stat.iconColor"
-          [iconBgColor]="stat.iconBgColor">
-        </app-stat-card>
+      <div class="stats-section">
+        <h2 class="section-title">Estatísticas dos Últimos 7 Dias</h2>
+        
+        <div class="stats-grid">
+          <app-stat-card 
+            *ngFor="let stat of statsData"
+            [title]="stat.title"
+            [value]="stat.value"
+            [subtitle]="stat.subtitle"
+            [percentage]="stat.percentage"
+            [icon]="stat.icon"
+            [iconColor]="stat.iconColor"
+            [iconBgColor]="stat.iconBgColor">
+          </app-stat-card>
+        </div>
       </div>
-    </div>
+    </ng-container>
+    
+    <ng-template #notLoggedIn>
+      <div class="welcome-card">
+        <div class="welcome-content">
+          <div class="welcome-icon">
+            <ion-icon name="person-add-outline"></ion-icon>
+          </div>
+          <h3>Bem-vindo ao BJJ House!</h3>
+          <p>Faça login para acessar suas estatísticas e acompanhar seu progresso nos treinos</p>
+          <ion-button 
+            (click)="createAthleteAccount()"
+            expand="block"
+            color="primary"
+            class="login-button">
+            <ion-icon name="person-add-outline" slot="start"></ion-icon>
+            Criar Conta de Atleta
+          </ion-button>
+        </div>
+      </div>
+    </ng-template>
   </div>
+  
+  <!-- Login Modal -->
+
 </ion-content>
+     

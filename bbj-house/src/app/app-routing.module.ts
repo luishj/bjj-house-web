@@ -34,6 +34,14 @@ const routes: Routes = [
   {
     path: 'training-details/:id',
     loadChildren: () => import('./treinos/training-details/training-details.module').then(m => m.TrainingDetailsPageModule)
+  },
+    {
+    path: 'athlete-registration',
+    loadChildren: () => import('./components/athlete-registration/athlete-registration.module').then(m => m.AthleteRegistrationPageModule)
+  },
+    {
+    path: 'login',
+    loadChildren: () => import('./components/login/login.module').then(m => m.LoginPageModule)
   }
 ];
 @NgModule({

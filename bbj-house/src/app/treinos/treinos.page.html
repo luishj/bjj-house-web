@@ -6,7 +6,7 @@
 
   <div class="content-wrapper">
     <!-- Botão Adicionar Treino -->
-    <div class="add-training-section">
+    <div class="add-training-section" *ngIf="(isAuthenticated$ | async) ">
       <ion-button 
         (click)="addTraining()"
         expand="block"
@@ -18,7 +18,7 @@
     </div>
 
     <!-- Lista de Treinos -->
-    <div class="trainings-list" *ngIf="trainings.length > 0">
+    <div class="trainings-list" *ngIf="(isAuthenticated$ | async) && trainings.length > 0">
       <div 
         *ngFor="let training of trainings" 
         class="training-card">
@@ -45,7 +45,7 @@
               <span class="stat-value">{{ training.positions }}</span>
             </div>
             <div class="stat-item">
-              <span class="stat-label">Roladas</span>
+              <span class="stat-label">Lutas</span>
               <span class="stat-value">{{ training.rolls }}</span>
             </div>
             <div class="stat-item">
@@ -77,19 +77,20 @@
     </div>
 
     <!-- Estado Vazio -->
-    <div class="empty-state" *ngIf="trainings.length === 0">
+    <div class="empty-state" *ngIf="!(isAuthenticated$ | async) || trainings.length === 0">
       <div class="empty-icon">
         <ion-icon name="fitness-outline"></ion-icon>
       </div>
-      <h3>Nenhum treino registrado</h3>
-      <p>Comece registrando seu primeiro treino!</p>
+      <h3>{{ (isAuthenticated$ | async) ? 'Nenhum treino registrado' : 'Faça login para ver seus treinos' }}</h3>
+      <p>{{ (isAuthenticated$ | async) ? 'Comece registrando seu primeiro treino!' : 'Entre na sua conta para acessar e gerenciar seus treinos' }}</p>
       <ion-button 
         (click)="addTraining()"
         fill="solid"
         color="primary">
         <ion-icon name="add" slot="start"></ion-icon>
-        Adicionar Primeiro Treino
+        {{ (isAuthenticated$ | async) ? 'Adicionar Primeiro Treino' : 'Fazer Login' }}
       </ion-button>
     </div>
   </div>
+
 </ion-content>

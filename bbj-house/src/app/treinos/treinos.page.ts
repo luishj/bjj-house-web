@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController, ToastController } from '@ionic/angular';
+import { AuthService } from '../services/auth.service';
+import { Observable } from 'rxjs';
 
 interface Training {
   id: string;
@@ -19,6 +21,9 @@ interface Training {
       standalone: false,
 })
 export class TreinosPage implements OnInit {
+
+  showLoginModal = false;
+  isAuthenticated$: Observable<boolean>;
 
   trainings: Training[] = [
     {
@@ -52,20 +57,43 @@ export class TreinosPage implements OnInit {
 
   constructor(
     private router: Router,
-    private alertController: AlertController
-  ) { }
+    private alertController: AlertController,
+    private authService: AuthService,
+    private toastController: ToastController,
+     private modalController:ModalController
+  ) {
+    this.isAuthenticated$ = new Observable(observer => {
+      this.authService.user$.subscribe(user => {
+        observer.next(!!user);
+      });
+    });
+  }
 
   ngOnInit() {
   }
 
   addTraining() {
+    if (!this.authService.isAuthenticated) {
+   
+  this.router.navigate(['/login']);
+      return;
+    }
     this.router.navigate(['/training-registration']);
   }
+
   viewTraining(training: Training) {
+    if (!this.authService.isAuthenticated) {
+  this.router.navigate(['/login']);
+      return;
+    }
     this.router.navigate(['/training-details', training.id]);
   }
 
- async editTraining(training: Training) {
+  async editTraining(training: Training) {
+    if (!this.authService.isAuthenticated) {
+     this.router.navigate(['/login']);
+      return;
+    }
     this.router.navigate(['/training-edit', training.id]);
   }
 
@@ -76,5 +104,26 @@ export class TreinosPage implements OnInit {
       month: '2-digit',
       year: 'numeric'
     });
+  }
+
+
+   openLoginModal() {
+
+  this.router.navigate(['/login']);
+  }
+
+  closeLoginModal() {
+    this.showLoginModal = false;
+  }
+
+  async onLoginSuccess() {
+    this.closeLoginModal();
+    const toast = await this.toastController.create({
+      message: 'Login realizado com sucesso!',
+      duration: 2000,
+      color: 'success',
+      position: 'top'
+    });
+    toast.present();
   }
 }

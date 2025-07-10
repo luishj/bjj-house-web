@@ -1,0 +1,323 @@
+.athlete-registration-content {
+  --background: #f8fafc;
+}
+
+.header-section {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: white;
+  padding: 32px 20px 24px 20px;
+  border-radius: 0 0 24px 24px;
+  margin-bottom: 20px;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.back-button {
+  --color: white;
+  --background: transparent;
+  --border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+}
+
+.header-spacer {
+  width: 40px;
+}
+
+.page-subtitle {
+  font-size: 14px;
+  opacity: 0.9;
+  margin: 0;
+  text-align: center;
+}
+
+.content-wrapper {
+  padding: 0 16px 24px 16px;
+}
+
+.section-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 20px 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.label-icon {
+  font-size: 16px;
+  margin-right: 8px;
+  color: #6b7280;
+}
+
+.custom-input,
+.custom-select,
+.custom-datetime {
+  --background: #f9fafb;
+  --border-color: #e5e7eb;
+  --border-radius: 12px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --color: #1f2937;
+  font-size: 14px;
+}
+
+.custom-input:focus-within,
+.custom-select:focus-within,
+.custom-datetime:focus-within {
+  --border-color: #4f46e5;
+}
+
+.degree-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 12px 0;
+}
+
+.degree-btn {
+  --background: transparent;
+  --border-color: #d1d5db;
+  --color: #6b7280;
+  --border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.degree-value {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  min-width: 32px;
+  text-align: center;
+}
+
+.degree-info {
+  font-size: 12px;
+  color: #6b7280;
+  text-align: center;
+  margin: 8px 0 0 0;
+}
+
+.belt-preview {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.preview-label {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0 0 12px 0;
+}
+
+.belt-display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.belt-base {
+  width: 64px;
+  height: 16px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  &.belt-white {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #d1d5db;
+  }
+  
+  &.belt-blue {
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+  }
+  
+  &.belt-purple {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  }
+  
+  &.belt-brown {
+    background: linear-gradient(135deg, #92400e 0%, #78350f 100%);
+  }
+  
+  &.belt-black {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  }
+  
+  &.belt-coral {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  }
+  
+  &.belt-red {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  }
+  
+  &.belt-default {
+    background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+  }
+}
+
+.belt-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.training-type-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.training-type-item {
+  --background: #f9fafb;
+  --border-color: #e5e7eb;
+  --border-radius: 12px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  margin: 0;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.add-schedule-button {
+  --background: #10b981;
+  --background-activated: #059669;
+  --border-radius: 12px;
+  height: 48px;
+  font-weight: 600;
+  margin: 16px 0;
+}
+
+.schedules-list {
+  margin-top: 20px;
+}
+
+.schedules-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin: 0 0 12px 0;
+}
+
+.schedule-item {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.schedule-content {
+  flex: 1;
+}
+
+.schedule-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.schedule-day {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.schedule-time {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.schedule-type {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 6px;
+  width: fit-content;
+  
+  &.type-gi {
+    background: #dbeafe;
+    color: #1e40af;
+  }
+  
+  &.type-nogi {
+    background: #fed7aa;
+    color: #ea580c;
+  }
+}
+
+.save-section {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.save-button {
+  --background: #4f46e5;
+  --background-activated: #3730a3;
+  --border-radius: 16px;
+  height: 56px;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.required-fields {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+// Responsive adjustments
+@media (min-width: 768px) {
+  .content-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 24px 24px 24px;
+  }
+  
+  .schedule-info {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+}

@@ -124,9 +124,9 @@
       </div>
     </div>
 
-    <!-- Roladas -->
+    <!-- Lutas -->
     <div class="section-card">
-      <h2 class="section-title">Roladas</h2>
+      <h2 class="section-title">Lutas</h2>
       
       <div class="counter-group">
         <div class="counter-item">
@@ -241,16 +241,16 @@
         color="success"
         class="add-button">
         <ion-icon name="add" slot="start"></ion-icon>
-        Adicionar Rolada
+        Adicionar Luta
       </ion-button>
 
-      <!-- Lista de roladas adicionadas -->
+      <!-- Lista de lutas adicionadas -->
       <div class="added-items" *ngIf="trainingData.rolls.length > 0">
         <div 
           *ngFor="let roll of trainingData.rolls; let i = index" 
           class="added-item roll-item">
           <div class="item-content">
-            <h4>Rolada {{ i + 1 }}</h4>
+            <h4>Luta {{ i + 1 }}</h4>
             <div class="roll-stats">
               <span class="stat">{{ roll.rollTime }}min</span>
               <span class="stat">{{ roll.techniquesApplied }} técnicas</span>

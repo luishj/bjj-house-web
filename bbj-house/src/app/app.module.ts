@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { TrainingEditPage } from './treinos/training-edit/training-edit.page';
+import { LoginModalComponent } from './components/login-modal/login-modal.component';
 
 @NgModule({
   declarations: [AppComponent],

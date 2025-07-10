@@ -11,13 +11,14 @@ import { EstatisticaCardComponent } from '../components/estatistica-card/estatis
 import { GraduacaoCardComponent } from '../components/graduacao-card/graduacao-card.component';
 import { HeaderCardComponent } from '../components/header-card/header-card.component';
 import { StatCardComponent } from '../components/stat-card/stat-card.component';
+import { LoginModalComponent } from '../components/login-modal/login-modal.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,   
     
   ],
   declarations: [HomePage,EstatisticaCardComponent,GraduacaoCardComponent,HeaderCardComponent,StatCardComponent]

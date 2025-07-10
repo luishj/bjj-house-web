@@ -89,7 +89,7 @@
           <ion-icon name="fitness"></ion-icon>
         </div>
         <div class="stat-content">
-          <h3>Roladas</h3>
+          <h3>Lutas</h3>
           <p class="stat-value">{{ trainingData.totalRolls }}</p>
           <p class="stat-subtitle">realizadas</p>
         </div>
@@ -128,16 +128,16 @@
       </ng-template>
     </div>
 
-    <!-- Detalhes das Roladas -->
+    <!-- Detalhes das Lutas -->
     <div class="section-card">
-      <h2 class="section-title">Detalhes das Roladas</h2>
+      <h2 class="section-title">Detalhes das Lutas</h2>
       
       <div *ngIf="trainingData.rolls.length > 0; else noRolls" class="rolls-list">
         <div 
           *ngFor="let roll of trainingData.rolls; let i = index" 
           class="roll-item">
           <div class="roll-header">
-            <h4 class="roll-title">Rolada {{ i + 1 }}</h4>
+            <h4 class="roll-title">Luta {{ i + 1 }}</h4>
             <span class="roll-duration">{{ roll.rollTime }} min</span>
           </div>
           
@@ -180,7 +180,7 @@
       <ng-template #noRolls>
         <div class="empty-state">
           <ion-icon name="fitness-outline"></ion-icon>
-          <p>Nenhuma rolada registrada</p>
+          <p>Nenhuma luta registrada</p>
         </div>
       </ng-template>
     </div>

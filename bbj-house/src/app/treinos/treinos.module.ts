@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { TreinosPageRoutingModule } from './treinos-routing.module';
 import { TreinosPage } from './treinos.page';
+import { LoginModalComponent } from '../components/login-modal/login-modal.component';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { TreinosPage } from './treinos.page';
     FormsModule,
     IonicModule,
     TreinosPageRoutingModule
+    
   ],
-  declarations: [TreinosPage]
+  declarations: [TreinosPage,LoginModalComponent]
 })
 export class TreinosPageModule {}

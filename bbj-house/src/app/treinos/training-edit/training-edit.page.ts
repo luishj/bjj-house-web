@@ -170,15 +170,15 @@ export class TrainingEditPage implements OnInit {
       this.trainingData.takedowns = 0;
       this.trainingData.guardPasses = 0;
 
-      this.showToast('Rolada adicionada com sucesso!', 'success');
+      this.showToast('Luta adicionada com sucesso!', 'success');
     } else {
-      this.showToast('Por favor, defina o tempo da rolada', 'warning');
+      this.showToast('Por favor, defina o tempo da luta', 'warning');
     }
   }
 
   removeRoll(index: number) {
     this.trainingData.rolls.splice(index, 1);
-    this.showToast('Rolada removida', 'medium');
+    this.showToast('Luta removida', 'medium');
   }
 
   async saveTraining() {
